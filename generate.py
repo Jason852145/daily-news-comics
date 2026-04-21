@@ -28,7 +28,9 @@ GH_OWNER, GH_REPO = GITHUB_REPO.split("/")
 PAGES_URL = f"https://{GH_OWNER.lower()}.github.io/{GH_REPO}"
 
 TZ_TAIPEI = ZoneInfo("Asia/Taipei")
-TODAY = datetime.datetime.now(TZ_TAIPEI).date().isoformat()  # YYYY-MM-DD
+NOW_TPE = datetime.datetime.now(TZ_TAIPEI)
+TODAY = NOW_TPE.date().isoformat()                   # YYYY-MM-DD
+RUN_STAMP = NOW_TPE.strftime("%Y%m%d-%H%M")          # for cache-busting image filenames
 
 OUT_DIR = Path("docs")
 OUT_DIR.mkdir(exist_ok=True)
@@ -98,8 +100,10 @@ For each of the {TOP_N} selected stories, produce:
 
 - scene_en: Short English scene description for image generation. 1-2 clauses describing 1-3 cute chibi characters in a scene that VISUALLY represents the story. Include ethnicity/clothing context if relevant. Do NOT include any style keywords — those are appended separately.
 
+- source_url: Copy the exact "link" field from the original news item you selected. This will be shown as a "news source" button so readers can read the original article.
+
 Return ONLY valid JSON (no markdown fences, no extra text) with this exact structure:
-{{"stories": [{{"title": "...", "tagline": "...", "body": "...", "scene_en": "..."}}, ... {TOP_N} items]}}
+{{"stories": [{{"title": "...", "tagline": "...", "body": "...", "scene_en": "...", "source_url": "..."}}, ... {TOP_N} items]}}
 
 News items to choose from:
 {json.dumps(raw_stories, ensure_ascii=False, indent=2)}
@@ -148,9 +152,11 @@ for i, s in enumerate(stories, 1):
     )
     r.raise_for_status()
     b64 = r.json()["data"][0]["b64_json"]
-    img_name = f"img-{TODAY}-{i}.png"
+    # Use RUN_STAMP (date + time) so LINE/browser can't serve a cached old image
+    img_name = f"img-{RUN_STAMP}-{i}.png"
     (OUT_DIR / img_name).write_bytes(base64.b64decode(b64))
     s["img_filename"] = img_name
+    s["story_index"] = i   # used for anchor IDs in HTML
     print(f"    ✓ saved {img_name}")
 
 # ===== Step 4: Build HTML =====
@@ -212,8 +218,24 @@ html = f"""<!DOCTYPE html>
   }}
   .comic p.body {{
     line-height: 1.8;
-    margin: 0;
+    margin: 0 0 12px;
     font-size: 15px;
+  }}
+  .comic .source {{
+    margin: 0;
+    padding-top: 10px;
+    border-top: 1px dashed #c9a66b;
+    font-size: 13px;
+  }}
+  .comic .source a {{
+    color: #8b4513;
+    text-decoration: none;
+  }}
+  .comic .source a:hover {{
+    text-decoration: underline;
+  }}
+  .comic {{
+    scroll-margin-top: 20px;
   }}
   footer {{
     text-align: center;
@@ -233,12 +255,18 @@ html = f"""<!DOCTYPE html>
     </header>
 """
 for s in stories:
+    source_url = s.get('source_url', '').strip()
+    source_html = (
+        f'<p class="source">🔗 <a href="{source_url}" target="_blank" rel="noopener">原始新聞 ↗</a></p>'
+        if source_url else ''
+    )
     html += f"""
-    <article class="comic">
+    <article class="comic" id="story-{s['story_index']}">
       <h2>{s['title']}</h2>
       <p class="tagline">{s['tagline']}</p>
       <img src="{s['img_filename']}" alt="{s['title']}">
       <p class="body">{s['body']}</p>
+      {source_html}
     </article>
 """
 html += f"""
@@ -259,9 +287,33 @@ print(f"  ✓ HTML saved: {TODAY}.html + index.html")
 # ===== Step 5: Broadcast to LINE =====
 print("Step 5: Broadcasting to LINE...")
 
-# Build Flex Message carousel (up to 12 bubbles; we use 3)
+# Build Flex Message carousel (up to 12 bubbles; we use {TOP_N})
 bubbles = []
 for s in stories:
+    source_url = s.get("source_url", "").strip()
+    # Build the footer buttons: always "閱讀完整" (anchor-linked to this story),
+    # plus "新聞出處" if we have a source URL
+    footer_buttons = [{
+        "type": "button",
+        "style": "primary",
+        "color": "#8B4513",
+        "action": {
+            "type": "uri",
+            "label": "閱讀完整",
+            "uri": f"{PAGES_URL}/{TODAY}.html#story-{s['story_index']}",
+        },
+    }]
+    if source_url:
+        footer_buttons.append({
+            "type": "button",
+            "style": "secondary",
+            "action": {
+                "type": "uri",
+                "label": "新聞出處",
+                "uri": source_url,
+            },
+        })
+
     bubbles.append({
         "type": "bubble",
         "hero": {
@@ -284,16 +336,8 @@ for s in stories:
         "footer": {
             "type": "box",
             "layout": "vertical",
-            "contents": [{
-                "type": "button",
-                "style": "primary",
-                "color": "#8B4513",
-                "action": {
-                    "type": "uri",
-                    "label": "閱讀完整",
-                    "uri": f"{PAGES_URL}/{TODAY}.html",
-                },
-            }],
+            "spacing": "sm",
+            "contents": footer_buttons,
         },
     })
 
