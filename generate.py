@@ -61,18 +61,45 @@ print(f"  Collected {len(raw_stories)} raw stories")
 
 # ===== Step 2: Ask GPT to pick top 3 + rewrite =====
 print("Step 2: GPT picking top 3 and rewriting in 古風...")
-rewrite_prompt = f"""You are a Chinese ancient-novel-style humor writer.
+rewrite_prompt = f"""You are a friendly journalist writing a daily international news digest for a Taiwanese audience. Your tone is modern, casual Traditional Chinese (繁體中文、白話文) with light humor — but humor is the STYLE, not the selection criterion. Your job is to help readers understand what's actually happening in the world today.
 
-Here are {len(raw_stories)} international news items from today. Pick the {TOP_N} that are most suitable for humorous ancient-Chinese-cartoon treatment — prefer stories with strong visual imagery, absurd situations, or character conflict. AVOID stories about casualties, disasters, or human tragedy; if such a story must be included, approach it with light side-commentary only.
+Here are {len(raw_stories)} international news items from today. From these, select the {TOP_N} MOST IMPORTANT / NEWSWORTHY stories — the ones a well-informed person should know about today.
 
-For each of the {TOP_N} you pick, produce:
-- title: Chinese, format "其一 · XXX" / "其二 · XXX" / "其三 · XXX" (章回體, catchy, 6-15 chars)
-- tagline: Chinese, half-classical-half-vernacular, one sentence, ~15-25 chars
-- body: Chinese, 80-150 chars, 文言 tone (曰、爾、矣、吾、上曰、下應), humorous but not mocking victims
-- scene_en: English short scene description for image generation, 1-2 clauses, describe 1-3 chibi characters doing something visually clear. Do NOT include style keywords — those will be appended separately.
+SELECTION PRINCIPLES (in priority order):
+1. Importance: pick stories with real impact — major political events, significant economic moves, breaking international developments, notable scientific/tech advances, major cultural moments
+2. Diversity: try to cover different regions (not all from one country) and different topic types (e.g., one politics, one economy, one tech/culture) if possible given the source material
+3. DO NOT pick stories just because they're funny or absurd — pick them because they matter. Humor is applied in the WRITING, not the selection.
 
-Return ONLY valid JSON (no markdown fences) with this exact structure:
-{{"stories": [{{"title": "...", "tagline": "...", "body": "...", "scene_en": "..."}}, ... 3 items]}}
+TONE / WRITING STYLE:
+- Modern Traditional Chinese (白話文), like explaining to a friend over coffee
+- Light humor via observation and witty framing, NOT jokes or mockery
+- For serious stories (politics, economics, tragic events): factual + insightful commentary + maybe one light closing line. DO NOT force humor on tragedy.
+- For lighter stories (cultural quirks, sports, tech oddities): can be more playful
+- NEVER use classical Chinese (文言文). NEVER use 曰/爾/矣/吾/上曰/下應/章回體
+
+For each of the {TOP_N} selected stories, produce:
+
+- title: Traditional Chinese, format "其N · [國家或城市] · [事件重點]". Location is REQUIRED so readers know this is international news.
+  Examples:
+  - "其一 · 菲律賓馬尼拉 · 熱帶低壓重創首都"
+  - "其二 · 美國華府 · 聯準會升息半碼"
+  - "其三 · 日本東京 · AI 法案進入國會審議"
+
+- tagline: Traditional Chinese, one sentence explaining WHERE + WHAT in plain language. 25-40 characters. Should tell the reader the essence of the news.
+  Examples:
+  - "菲律賓首都馬尼拉連日暴雨，多處淹水、交通癱瘓"
+  - "美國聯準會宣布升息 0.25%，市場反應兩極"
+
+- body: Traditional Chinese, 白話文 with light humor where appropriate. 150-250 characters. MUST include:
+  1. 事件地點（國家/城市）
+  2. 具體發生什麼事（時間、規模、誰受影響）
+  3. 為什麼這則新聞重要 / 有什麼後續或意義
+  4. （如合適）一句輕鬆的觀察或俏皮收尾 —— 但嚴肅新聞就平實收尾，別硬搞笑
+
+- scene_en: Short English scene description for image generation. 1-2 clauses describing 1-3 cute chibi characters in a scene that VISUALLY represents the story. Include ethnicity/clothing context if relevant. Do NOT include any style keywords — those are appended separately.
+
+Return ONLY valid JSON (no markdown fences, no extra text) with this exact structure:
+{{"stories": [{{"title": "...", "tagline": "...", "body": "...", "scene_en": "..."}}, ... {TOP_N} items]}}
 
 News items to choose from:
 {json.dumps(raw_stories, ensure_ascii=False, indent=2)}
