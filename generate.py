@@ -287,11 +287,53 @@ html += f"""
 (OUT_DIR / "index.html").write_text(html, encoding="utf-8")
 print(f"  ✓ HTML saved: {TODAY}.html + index.html")
 
-# ===== Step 5: Send to LINE (push in test mode, broadcast in prod) =====
+# ===== Step 5: Write structured JSON (for webhook consumption) =====
+print("Step 5: Writing JSON snapshot for webhook...")
+stories_dir = OUT_DIR / "stories"
+stories_dir.mkdir(exist_ok=True)
+
+day_json = {
+    "date": TODAY,
+    "generated_at": NOW_TPE.isoformat(timespec="seconds"),
+    "html_url": f"{PAGES_URL}/{TODAY}.html",
+    "stories": [
+        {
+            "index": s["story_index"],
+            "title": s["title"],
+            "tagline": s["tagline"],
+            "body": s["body"],
+            "image_url": f"{PAGES_URL}/{s['img_filename']}",
+            "anchor_url": f"{PAGES_URL}/{TODAY}.html#story-{s['story_index']}",
+            "source_url": s.get("source_url", "").strip(),
+        }
+        for s in stories
+    ],
+}
+day_path = stories_dir / f"{TODAY}.json"
+day_path.write_text(json.dumps(day_json, ensure_ascii=False, indent=2), encoding="utf-8")
+print(f"  ✓ wrote {day_path.relative_to(OUT_DIR.parent)}")
+
+# Update /docs/stories/index.json — accumulate dates, newest first
+index_path = stories_dir / "index.json"
+existing_dates = []
+if index_path.exists():
+    try:
+        existing_dates = json.loads(index_path.read_text(encoding="utf-8")).get("dates", [])
+    except (json.JSONDecodeError, ValueError):
+        pass  # corrupt file — rebuild from scratch
+
+all_dates = sorted(set(existing_dates) | {TODAY}, reverse=True)
+index_path.write_text(
+    json.dumps({"dates": all_dates, "latest": all_dates[0]}, ensure_ascii=False, indent=2),
+    encoding="utf-8",
+)
+print(f"  ✓ index.json now tracks {len(all_dates)} day(s), latest={all_dates[0]}")
+
+# ===== Step 6: Send to LINE (push in test mode, broadcast in prod) =====
 if LINE_TEST_USER_ID:
-    print(f"Step 5: Pushing to LINE (test mode → single user {LINE_TEST_USER_ID[:8]}...)...")
+    print(f"Step 6: Pushing to LINE (test mode → single user {LINE_TEST_USER_ID[:8]}...)...")
 else:
-    print("Step 5: Broadcasting to LINE (all friends)...")
+    print("Step 6: Broadcasting to LINE (all friends)...")
 
 # Build Flex Message carousel (up to 12 bubbles; we use {TOP_N})
 bubbles = []
