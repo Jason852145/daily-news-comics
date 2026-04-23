@@ -1,0 +1,9 @@
+name = "daily-news-line-bot"
+main = "src/index.js"
+compatibility_date = "2026-04-01"
+
+# Public config — non-secret. Secrets are set via `wrangler secret put`:
+#   LINE_CHANNEL_ACCESS_TOKEN
+#   LINE_CHANNEL_SECRET
+[vars]
+PAGES_URL = "https://jason852145.github.io/daily-news-comics"
