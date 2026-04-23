@@ -33,6 +33,9 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          # 手動觸發 = 測試模式 → push 只發給 Jason
+          # 排程 cron = 正式 → broadcast 發給所有好友
+          LINE_TEST_USER_ID: ${{ github.event_name == 'workflow_dispatch' && secrets.LINE_TEST_USER_ID || '' }}
         run: python generate.py
 
       - name: Commit generated files

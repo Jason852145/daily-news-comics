@@ -22,6 +22,9 @@ from zoneinfo import ZoneInfo
 # ===== Config =====
 OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 LINE_TOKEN = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
+# When set → send only to this userId via push API (test mode, workflow_dispatch)
+# When empty → broadcast to all friends (production cron)
+LINE_TEST_USER_ID = os.environ.get("LINE_TEST_USER_ID", "").strip()
 GITHUB_REPO = os.environ.get("GITHUB_REPOSITORY", "user/daily-news-comics")  # e.g. "jason/daily-news-comics"
 GH_OWNER, GH_REPO = GITHUB_REPO.split("/")
 # GitHub Pages uses lowercase for the user subdomain
@@ -284,8 +287,11 @@ html += f"""
 (OUT_DIR / "index.html").write_text(html, encoding="utf-8")
 print(f"  ✓ HTML saved: {TODAY}.html + index.html")
 
-# ===== Step 5: Broadcast to LINE =====
-print("Step 5: Broadcasting to LINE...")
+# ===== Step 5: Send to LINE (push in test mode, broadcast in prod) =====
+if LINE_TEST_USER_ID:
+    print(f"Step 5: Pushing to LINE (test mode → single user {LINE_TEST_USER_ID[:8]}...)...")
+else:
+    print("Step 5: Broadcasting to LINE (all friends)...")
 
 # Build Flex Message carousel (up to 12 bubbles; we use {TOP_N})
 bubbles = []
@@ -347,19 +353,28 @@ flex_message = {
     "contents": {"type": "carousel", "contents": bubbles},
 }
 
+if LINE_TEST_USER_ID:
+    line_endpoint = "https://api.line.me/v2/bot/message/push"
+    line_payload = {"to": LINE_TEST_USER_ID, "messages": [flex_message]}
+    mode_label = "push (test)"
+else:
+    line_endpoint = "https://api.line.me/v2/bot/message/broadcast"
+    line_payload = {"messages": [flex_message]}
+    mode_label = "broadcast"
+
 line_resp = requests.post(
-    "https://api.line.me/v2/bot/message/broadcast",
+    line_endpoint,
     headers={
         "Authorization": f"Bearer {LINE_TOKEN}",
         "Content-Type": "application/json",
     },
-    json={"messages": [flex_message]},
+    json=line_payload,
     timeout=30,
 )
 if line_resp.status_code == 200:
-    print(f"  ✓ LINE broadcast sent")
+    print(f"  ✓ LINE {mode_label} sent")
 else:
-    print(f"  ✗ LINE broadcast failed: {line_resp.status_code} {line_resp.text}")
+    print(f"  ✗ LINE {mode_label} failed: {line_resp.status_code} {line_resp.text}")
     # Don't raise — HTML is still generated
 
 print(f"\n✓ Done for {TODAY}")
