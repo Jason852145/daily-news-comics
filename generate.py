@@ -14,10 +14,38 @@ import os
 import json
 import base64
 import datetime
+import time
 import feedparser
 import requests
 from pathlib import Path
 from zoneinfo import ZoneInfo
+
+
+def openai_post_with_retry(url, headers, json_body, timeout, step_label, max_retries=4):
+    """POST to OpenAI with exponential backoff on 5xx/429/network errors.
+
+    Wait schedule: 5s, 10s, 20s, 40s between attempts (total <90s worst case).
+    Raises on permanent failure (4xx except 429) or after retries exhausted.
+    """
+    last_err = None
+    for attempt in range(max_retries):
+        try:
+            r = requests.post(url, headers=headers, json=json_body, timeout=timeout)
+            if r.status_code == 200:
+                return r
+            if r.status_code >= 500 or r.status_code == 429:
+                wait = 5 * (2 ** attempt)
+                print(f"  ! {step_label} got HTTP {r.status_code}, retry {attempt+1}/{max_retries} in {wait}s")
+                last_err = f"HTTP {r.status_code}: {r.text[:200]}"
+                time.sleep(wait)
+                continue
+            r.raise_for_status()
+        except (requests.ConnectionError, requests.Timeout) as e:
+            wait = 5 * (2 ** attempt)
+            print(f"  ! {step_label} network error ({type(e).__name__}), retry {attempt+1}/{max_retries} in {wait}s")
+            last_err = str(e)
+            time.sleep(wait)
+    raise RuntimeError(f"{step_label} failed after {max_retries} retries. Last error: {last_err}")
 
 # ===== Config =====
 OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
@@ -46,6 +74,15 @@ STYLE_SUFFIX = (
 )
 
 TOP_N = 5
+
+# ===== Dedup guard =====
+# Both Cloudflare Worker cron and GitHub Actions cron can trigger this workflow.
+# If today's stories JSON already exists (from an earlier run today), skip —
+# unless we're in test mode (LINE_TEST_USER_ID set), in which case allow re-runs.
+today_json_path = OUT_DIR / "stories" / f"{TODAY}.json"
+if today_json_path.exists() and not LINE_TEST_USER_ID:
+    print(f"Skip: {today_json_path} already exists (today's run done). Exiting cleanly.")
+    raise SystemExit(0)
 
 # ===== Step 1: Fetch news =====
 print("Step 1: Fetching news from RSS...")
@@ -112,21 +149,21 @@ News items to choose from:
 {json.dumps(raw_stories, ensure_ascii=False, indent=2)}
 """
 
-resp = requests.post(
+resp = openai_post_with_retry(
     "https://api.openai.com/v1/chat/completions",
     headers={
         "Authorization": f"Bearer {OPENAI_API_KEY}",
         "Content-Type": "application/json",
     },
-    json={
+    json_body={
         "model": "gpt-4o-mini",
         "messages": [{"role": "user", "content": rewrite_prompt}],
         "response_format": {"type": "json_object"},
         "temperature": 0.7,
     },
     timeout=60,
+    step_label="chat/completions",
 )
-resp.raise_for_status()
 rewritten = json.loads(resp.json()["choices"][0]["message"]["content"])
 stories = rewritten["stories"][:TOP_N]
 assert len(stories) == TOP_N, f"Expected {TOP_N} stories, got {len(stories)}"
@@ -138,13 +175,13 @@ print("Step 3: Generating SD chibi images...")
 for i, s in enumerate(stories, 1):
     img_prompt = f"{s['scene_en']}, {STYLE_SUFFIX}"
     print(f"  [{i}/{TOP_N}] prompt: {s['scene_en'][:60]}...")
-    r = requests.post(
+    r = openai_post_with_retry(
         "https://api.openai.com/v1/images/generations",
         headers={
             "Authorization": f"Bearer {OPENAI_API_KEY}",
             "Content-Type": "application/json",
         },
-        json={
+        json_body={
             "model": "gpt-image-1",
             "prompt": img_prompt,
             "size": "1024x1024",
@@ -152,8 +189,8 @@ for i, s in enumerate(stories, 1):
             "quality": "low",
         },
         timeout=120,
+        step_label=f"images/generations [{i}/{TOP_N}]",
     )
-    r.raise_for_status()
     b64 = r.json()["data"][0]["b64_json"]
     # Use RUN_STAMP (date + time) so LINE/browser can't serve a cached old image
     img_name = f"img-{RUN_STAMP}-{i}.png"

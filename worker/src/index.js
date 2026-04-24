@@ -29,7 +29,33 @@ export default {
 
     return new Response("not found", { status: 404 });
   },
+
+  // Cloudflare cron triggers fire here. We POST repository_dispatch to GitHub,
+  // which in turn fires the daily.yml workflow — CF cron is second-accurate,
+  // unlike GitHub's free-tier cron which can lag 6+ hours.
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil(triggerDailyWorkflow(env));
+  },
 };
+
+async function triggerDailyWorkflow(env) {
+  const repo = env.GITHUB_REPO; // e.g. "Jason852145/daily-news-comics"
+  const res = await fetch(`https://api.github.com/repos/${repo}/dispatches`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+      Accept: "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+      "User-Agent": "daily-news-line-bot-cron",
+    },
+    body: JSON.stringify({ event_type: "daily-news-trigger" }),
+  });
+  if (!res.ok) {
+    console.error("GitHub dispatch failed:", res.status, await res.text());
+  } else {
+    console.log(`GitHub dispatch OK → ${repo}`);
+  }
+}
 
 async function handleWebhook(request, env, ctx) {
   const bodyText = await request.text();

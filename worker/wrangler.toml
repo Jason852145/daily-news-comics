@@ -5,5 +5,13 @@ compatibility_date = "2026-04-01"
 # Public config — non-secret. Secrets are set via `wrangler secret put`:
 #   LINE_CHANNEL_ACCESS_TOKEN
 #   LINE_CHANNEL_SECRET
+#   GITHUB_TOKEN                  (fine-grained PAT, actions:write on this repo)
 [vars]
 PAGES_URL = "https://jason852145.github.io/daily-news-comics"
+GITHUB_REPO = "Jason852145/daily-news-comics"
+
+# Cloudflare cron — fires the scheduled() handler, which POSTs
+# repository_dispatch to GitHub to trigger daily.yml on time.
+# 22:12 UTC = 06:12 TW next day.
+[triggers]
+crons = ["12 22 * * *"]

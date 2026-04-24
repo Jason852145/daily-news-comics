@@ -1,10 +1,12 @@
 name: Daily News Comics
 
 on:
+  # 主要觸發來源：Cloudflare Worker cron → repository_dispatch（秒級準時）
+  repository_dispatch:
+    types: [daily-news-trigger]
+  # Fallback：GitHub cron（免費層可能延遲 6+ 小時，但 CF 若壞了至少還有）
+  # generate.py 前端有 dedup guard，兩邊都觸發也不會重發
   schedule:
-    # 每天 22:12 UTC = 台灣時間 06:12（隔天早上）
-    # 提早排程留大 buffer — GitHub Actions cron 有時會延遲數小時，
-    # 這樣就算延遲 2-6 小時，訊息仍能在上午內送達
     - cron: '12 22 * * *'
   workflow_dispatch:   # 允許在 Actions 頁面手動觸發測試
 
