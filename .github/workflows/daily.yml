@@ -1,13 +1,14 @@
 name: Daily News Comics
 
 on:
-  # 主要觸發來源：Cloudflare Worker cron → repository_dispatch（秒級準時）
+  # 主要觸發來源：cron-job.org（08:00 TW）→ Worker /trigger → repository_dispatch
+  # Fallback 1：Cloudflare Worker cron（08:30 TW）→ repository_dispatch
   repository_dispatch:
     types: [daily-news-trigger]
-  # Fallback：GitHub cron（免費層可能延遲 6+ 小時，但 CF 若壞了至少還有）
-  # generate.py 前端有 dedup guard，兩邊都觸發也不會重發
+  # Fallback 2：GitHub cron（免費層可能延遲 6+ 小時，但其他都壞了至少還有）
+  # generate.py 前端有 dedup guard，多重觸發也不會重發
   schedule:
-    - cron: '12 22 * * *'
+    - cron: '30 0 * * *'
   workflow_dispatch:   # 允許在 Actions 頁面手動觸發測試
 
 permissions:

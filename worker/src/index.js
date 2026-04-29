@@ -146,8 +146,8 @@ async function handleFollow(ev, env) {
   const latest = await fetchLatestStories(env);
 
   const greetingText = latest
-    ? `歡迎加入每日新聞漫畫！\n\n這是今天 (${latest.date}) 的國際新聞，每天早上 06:12 會自動送達。\n\n隨時輸入：\n・「今日」看今天\n・「昨日」看昨天\n・「4/21」查特定日期\n・「清單」看可查日期`
-    : `歡迎加入每日新聞漫畫！\n\n每天早上 06:12 會自動送達國際新聞摘要。\n明天見 👋`;
+    ? `歡迎加入每日新聞漫畫！\n\n這是今天 (${latest.date}) 的國際新聞，每天早上 08:00 會自動送達。\n\n隨時輸入：\n・「今日」看今天\n・「昨日」看昨天\n・「4/21」查特定日期\n・「清單」看可查日期`
+    : `歡迎加入每日新聞漫畫！\n\n每天早上 08:00 會自動送達國際新聞摘要。\n明天見 👋`;
 
   const messages = [{ type: "text", text: greetingText }];
   if (latest) messages.push(buildCarousel(latest));
