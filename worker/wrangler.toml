@@ -9,9 +9,14 @@ compatibility_date = "2026-04-01"
 [vars]
 PAGES_URL = "https://jason852145.github.io/daily-news-comics"
 GITHUB_REPO = "Jason852145/daily-news-comics"
+JASON_USER_ID = "U542b91dfa5acecdae9b156cc422fbb65"
 
 # Cloudflare cron — fires the scheduled() handler, which POSTs
 # repository_dispatch to GitHub to trigger daily.yml on time.
 # 22:12 UTC = 06:12 TW next day.
 [triggers]
 crons = ["12 22 * * *"]
+
+# Persist Worker logs so cron failures are diagnosable next time.
+[observability]
+enabled = true

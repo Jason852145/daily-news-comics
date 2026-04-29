@@ -1,8 +1,9 @@
 // Daily News LINE Bot — Cloudflare Worker webhook
 //
 // Routes:
-//   POST /webhook   → LINE Messaging API webhook (events from LINE servers)
-//   GET  /          → health check
+//   POST /webhook              → LINE Messaging API webhook (events from LINE servers)
+//   GET  /trigger?token=...    → external cron (cron-job.org) entry point; fires repository_dispatch
+//   GET  /                     → health check
 //
 // Events handled:
 //   follow          → send welcome + today's news
@@ -23,6 +24,10 @@ export default {
       return new Response("daily-news-line-bot ok", { status: 200 });
     }
 
+    if (request.method === "GET" && url.pathname === "/trigger") {
+      return handleExternalTrigger(request, env, ctx);
+    }
+
     if (request.method === "POST" && url.pathname === "/webhook") {
       return handleWebhook(request, env, ctx);
     }
@@ -30,30 +35,72 @@ export default {
     return new Response("not found", { status: 404 });
   },
 
-  // Cloudflare cron triggers fire here. We POST repository_dispatch to GitHub,
-  // which in turn fires the daily.yml workflow — CF cron is second-accurate,
-  // unlike GitHub's free-tier cron which can lag 6+ hours.
+  // CF cron — kept as backup. Primary trigger is now cron-job.org → /trigger.
+  // generate.py has a dedup guard (skip if today's JSON exists), so dual-firing is safe.
   async scheduled(event, env, ctx) {
     ctx.waitUntil(triggerDailyWorkflow(env));
   },
 };
 
+async function handleExternalTrigger(request, env, ctx) {
+  const url = new URL(request.url);
+  const token = url.searchParams.get("token") || "";
+  const expected = env.CRON_TRIGGER_TOKEN || "";
+
+  if (!expected || token.length !== expected.length) {
+    return new Response("forbidden", { status: 403 });
+  }
+  let diff = 0;
+  for (let i = 0; i < expected.length; i++) {
+    diff |= token.charCodeAt(i) ^ expected.charCodeAt(i);
+  }
+  if (diff !== 0) {
+    return new Response("forbidden", { status: 403 });
+  }
+
+  ctx.waitUntil(triggerDailyWorkflow(env));
+  return new Response("dispatched", { status: 200 });
+}
+
 async function triggerDailyWorkflow(env) {
   const repo = env.GITHUB_REPO; // e.g. "Jason852145/daily-news-comics"
-  const res = await fetch(`https://api.github.com/repos/${repo}/dispatches`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${env.GITHUB_TOKEN}`,
-      Accept: "application/vnd.github+json",
-      "X-GitHub-Api-Version": "2022-11-28",
-      "User-Agent": "daily-news-line-bot-cron",
-    },
-    body: JSON.stringify({ event_type: "daily-news-trigger" }),
-  });
-  if (!res.ok) {
-    console.error("GitHub dispatch failed:", res.status, await res.text());
-  } else {
-    console.log(`GitHub dispatch OK → ${repo}`);
+  try {
+    const res = await fetch(`https://api.github.com/repos/${repo}/dispatches`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+        Accept: "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+        "User-Agent": "daily-news-line-bot-cron",
+      },
+      body: JSON.stringify({ event_type: "daily-news-trigger" }),
+    });
+    if (!res.ok) {
+      const body = (await res.text()).substring(0, 300);
+      console.error("GitHub dispatch failed:", res.status, body);
+      await alertJason(env, `🚨 每日新聞 dispatch 失敗\nHTTP ${res.status}\n${body}\n\n→ 可能 GITHUB_TOKEN 過期了，去 GitHub PAT 看`);
+    } else {
+      console.log(`GitHub dispatch OK → ${repo}`);
+    }
+  } catch (err) {
+    console.error("GitHub dispatch threw:", err?.message || err);
+    await alertJason(env, `🚨 每日新聞 dispatch 例外\n${err?.message || err}`);
+  }
+}
+
+async function alertJason(env, text) {
+  if (!env.JASON_USER_ID || !env.LINE_CHANNEL_ACCESS_TOKEN) return;
+  try {
+    await fetch(`${LINE_API}/push`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.LINE_CHANNEL_ACCESS_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ to: env.JASON_USER_ID, messages: [{ type: "text", text }] }),
+    });
+  } catch (e) {
+    console.error("alertJason failed:", e?.message || e);
   }
 }
 
