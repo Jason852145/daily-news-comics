@@ -1,0 +1,52 @@
+{
+  "date": "2026-06-03",
+  "generated_at": "2026-06-03T08:00:55+08:00",
+  "html_url": "https://jason852145.github.io/daily-news-comics/2026-06-03.html",
+  "stories": [
+    {
+      "index": 1,
+      "title": "其一 · 以色列南部 · 以色列空襲黎巴嫩南部",
+      "tagline": "以色列持續空襲黎巴嫩，但部分停火協議仍在進行中。",
+      "body": "在以色列南部，空襲黎巴嫩南部的行動仍在進行中，儘管美國宣佈的停火協議部分生效。此舉可能會加劇地區緊張局勢，影響到以色列與哈茲堡的談判進程。希望這不會演變成一場“誰的空襲更厲害”的比賽！",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260603-0800-1.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-06-03.html#story-1",
+      "source_url": "https://www.bbc.com/news/articles/c936zvne0l6o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "index": 2,
+      "title": "其二 · 烏克蘭基輔 · 俄軍空襲基輔",
+      "tagline": "基輔遭俄軍猛烈空襲，民眾從地下避難所回到家中。",
+      "body": "在烏克蘭基輔，剛從地下避難所出來的居民面對猛烈的俄軍空襲，造成嚴重損失。這次攻擊不僅是物理上的破壞，還對民心造成巨大心理壓力。希望他們能早日重建，不要再被炸到得失心瘋。",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260603-0800-2.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-06-03.html#story-2",
+      "source_url": "https://www.bbc.com/news/articles/c5y9nyvg9z2o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "index": 3,
+      "title": "其三 · 美國華府 · 微軟量子電腦新突破",
+      "tagline": "微軟宣佈新量子晶片可靠性提升一千倍。",
+      "body": "在美國華府，微軟最新宣佈他們的新量子晶片的可靠性提升了一千倍，預計在十年內能解決實用的商業問題。這不僅是科技上的大突破，還可能改變未來的計算方式。希望未來的電腦能幫我們解決更複雜的問題，比如為什麼總是忘記帶傘！",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260603-0800-3.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-06-03.html#story-3",
+      "source_url": "https://www.bbc.com/news/articles/cj4p7gyvp52o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "index": 4,
+      "title": "其四 · 加拿大 · 加拿大要求續簽北美自由貿易協議",
+      "tagline": "加拿大正式要求續簽北美自由貿易協定，以加強經濟合作。",
+      "body": "加拿大貿易部長向美國和墨西哥提出續簽北美自由貿易協定的請求，這對三國的經濟合作至關重要。隨著全球經濟的不確定性，這一舉措或將為北美帶來更多穩定。希望各國的貿易談判不要像選舉一樣，鬧得不可開交！",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260603-0800-4.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-06-03.html#story-4",
+      "source_url": "https://www.bbc.com/news/articles/cn9prr3w9nlo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "index": 5,
+      "title": "其五 · 英國 · 英國警方被控手銬暴力事件引發抗議",
+      "tagline": "英國警方因手銬事件引發民眾抗議，案件越演越烈。",
+      "body": "在英國，一名學生亨利·諾瓦克在被警方手銬的情況下死亡，該事件引發了全國性的抗議與對警察的調查。這不僅是一起悲劇，也引發了對執法方式的廣泛質疑，讓人們再次思考「維護治安」與「人權」之間的平衡。希望未來的執法能更加人性化，而不是成為“執法如山”的代名詞。",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260603-0800-5.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-06-03.html#story-5",
+      "source_url": "https://www.nytimes.com/2026/06/02/world/europe/henry-nowak-murder-uk-stabbing.html"
+    }
+  ]
+}
