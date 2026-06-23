@@ -1,0 +1,52 @@
+{
+  "date": "2026-06-23",
+  "generated_at": "2026-06-23T08:01:21+08:00",
+  "html_url": "https://jason852145.github.io/daily-news-comics/2026-06-23.html",
+  "stories": [
+    {
+      "index": 1,
+      "title": "其一 · 卡塔爾 · 液化天然氣廠爆炸造成13死",
+      "tagline": "卡塔爾液化天然氣廠發生爆炸，造成13人喪生。",
+      "body": "在卡塔爾的液化天然氣加工廠，日前發生了一起技術故障導致的爆炸，造成至少13人死亡，66人受傷。這起事件發生在重啟操作期間，影響了該國的天然氣生產，對全球能源供應構成威脅，特別是在當前能源需求高漲的時期。希望這次事故不會讓卡塔爾的天然氣夢想變成泡影。",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260623-0801-1.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-06-23.html#story-1",
+      "source_url": "https://www.nytimes.com/2026/06/22/world/middleeast/qatar-explosion-gas.html"
+    },
+    {
+      "index": 2,
+      "title": "其二 · 烏克蘭 · 俄軍增兵威脅頓巴斯城市",
+      "tagline": "烏克蘭頓巴斯地區，俄軍增兵使局勢緊張。",
+      "body": "烏克蘭的頓巴斯地區再次成為焦點，俄軍增兵威脅著關鍵城市Kostyantynivka的安全。如果這裡淪陷，俄軍將能夠向烏克蘭的最後防線發起進攻。這不僅影響當地民眾的安全，也可能改變整個戰爭的格局，讓人不禁想問：戰爭究竟何時才會結束？",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260623-0801-2.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-06-23.html#story-2",
+      "source_url": "https://www.bbc.com/news/articles/c9w2g0ewk95o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "index": 3,
+      "title": "其三 · 伊朗 · 美國放寬石油制裁",
+      "tagline": "美國對伊朗放寬石油制裁，核檢查問題複雜。",
+      "body": "美國在與伊朗的對話中，決定放寬部分石油制裁，但伊朗方面卻表示並未對核檢查作出新承諾。這樣的消息讓國際社會對兩國的關係感到疑惑不已，因為在核問題上，雙方的立場仍然相當不一致。看來，改善關係的路途還是漫長啊！",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260623-0801-3.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-06-23.html#story-3",
+      "source_url": "https://www.nytimes.com/live/2026/06/22/world/iran-us-trump-lebanon"
+    },
+    {
+      "index": 4,
+      "title": "其四 · 日本東京 · AI法案進入國會審議",
+      "tagline": "日本國會開始審議AI相關法案，對未來科技影響深遠。",
+      "body": "日本國會最近開始審議一項關於人工智慧的法案，旨在規範AI發展及其應用。隨著AI技術迅速發展，這項法案的重要性不言而喻，未來可能會影響許多行業和職位。希望這次立法不會成為科技進步的絆腳石！",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260623-0801-4.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-06-23.html#story-4",
+      "source_url": "https://www.bbc.com/news/articles/c3vy3e6q90qo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "index": 5,
+      "title": "其五 · 古巴 · 燃料危機使學校停課",
+      "tagline": "古巴因燃料危機提前結束學年，學校停課。",
+      "body": "古巴目前正面臨嚴重的燃料危機，導致學校不得不提前結束學年。這對於本就搖搖欲墜的教育系統來說無疑是雪上加霜，許多學生的學習計畫因此受到影響。希望古巴能早日走出這個燃料困境，讓學生們回到課堂！",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260623-0801-5.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-06-23.html#story-5",
+      "source_url": "https://www.nytimes.com/2026/06/22/world/americas/cuba-oil-gas-crisis-schools-education.html"
+    }
+  ]
+}
