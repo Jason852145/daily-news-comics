@@ -1,0 +1,52 @@
+{
+  "date": "2026-06-30",
+  "generated_at": "2026-06-30T08:01:15+08:00",
+  "html_url": "https://jason852145.github.io/daily-news-comics/2026-06-30.html",
+  "stories": [
+    {
+      "index": 1,
+      "title": "其一 · 委內瑞拉 · 震後救援陷入絕望",
+      "tagline": "委內瑞拉震災死亡人數已超過1700人",
+      "body": "在委內瑞拉，最近的雙重地震造成超過1700人死亡，隨著救援工作進入絕望階段，許多家庭仍在尋找失蹤的親人。這場災難不僅影響了生存者的生活，還讓整個國家的重建工作面臨挑戰，看來未來的日子會很艱難。希望他們能早日重建家園。",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260630-0801-1.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-06-30.html#story-1",
+      "source_url": "https://www.nytimes.com/2026/06/29/world/americas/venezuela-earthquake-victims-rescue-deaths.html"
+    },
+    {
+      "index": 2,
+      "title": "其二 · 德國 · 六人因監護權爭執遭槍擊身亡",
+      "tagline": "德國發生罕見槍擊事件，六人喪命",
+      "body": "在德國，一名45歲男子因為與前妻的監護權爭執，對一個母嬰中心開槍，造成六名工作人員喪生。這起事件引發了對家庭暴力和槍支管制的熱烈討論，讓人不禁想：在追求親情之前，是否應該先追求和平？",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260630-0801-2.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-06-30.html#story-2",
+      "source_url": "https://www.nytimes.com/2026/06/29/world/europe/germany-shooting-stade.html"
+    },
+    {
+      "index": 3,
+      "title": "其三 · 美國華府 · 最高法院駁回特朗普上訴",
+      "tagline": "特朗普需支付350萬美元賠償金",
+      "body": "美國最高法院拒絕了特朗普針對E. Jean Carroll性侵案的最後上訴，這意味著他將得支付350萬美元的賠償金。這個案件不僅是特朗普的法律麻煩，也可能影響他未來的政治生涯，看來這位前總統的麻煩還不止於此。",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260630-0801-3.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-06-30.html#story-3",
+      "source_url": "https://www.bbc.co.uk/news/articles/cn8q2z5wpn2o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "index": 4,
+      "title": "其四 · 美國 · 美伊衝突再升溫",
+      "tagline": "美國與伊朗之間的衝突再度加劇",
+      "body": "美國與伊朗之間的緊張局勢持續升溫，雙方在最近的交火中互相指責違反停火協議。各方擔心這可能導致更大規模的衝突，影響整個中東地區的穩定。真希望他們能坐下來好好聊聊，或許能找到和平的路。",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260630-0801-4.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-06-30.html#story-4",
+      "source_url": "https://www.bbc.co.uk/news/articles/c872rjw17qpo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "index": 5,
+      "title": "其五 · 英國 · 英國可能迎來新首相",
+      "tagline": "安迪·伯納姆或成為英國新首相",
+      "body": "英國的安迪·伯納姆看起來將成為下任首相，他提到希望將權力從倫敦轉移至其他地區，成立名為 \"北方10號\" 的新機構，讓地方領導人獲得更多資源和控制權。這讓人期待，或許未來的英國會更公平一點？",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260630-0801-5.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-06-30.html#story-5",
+      "source_url": "https://www.nytimes.com/2026/06/29/world/europe/uk-andy-burnham-agenda-speech.html"
+    }
+  ]
+}
