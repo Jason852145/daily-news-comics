@@ -1,0 +1,52 @@
+{
+  "date": "2026-07-16",
+  "generated_at": "2026-07-16T08:01:25+08:00",
+  "html_url": "https://jason852145.github.io/daily-news-comics/2026-07-16.html",
+  "stories": [
+    {
+      "index": 1,
+      "title": "其一 · 法國巴黎 · 通過協助安樂死法案",
+      "tagline": "法國國會通過安樂死法案，醫生可協助病人安詳離世",
+      "body": "在法國巴黎，國會在經過多年的爭論後，終於通過了一項安樂死法案。該法案允許符合嚴格條件的末期病人獲得安樂死，這對於許多病患家庭來說，無疑是一種解脫。這項法律的通過，可能會在全球範圍內引發更多的討論和關注，畢竟，生死問題還是挺敏感的。",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260716-0801-1.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-07-16.html#story-1",
+      "source_url": "https://www.bbc.co.uk/news/articles/cvg7g2z4pv3o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "index": 2,
+      "title": "其二 · 美國華府 · 美國對伊朗發動新一輪空襲",
+      "tagline": "美國再度對伊朗發動空襲，局勢緊張升級",
+      "body": "在華府，美國對伊朗的軍事行動再度升級，進行了新的空襲。特朗普總統警告伊朗，若不改變行為，可能會面臨更嚴厲的後果。這樣的軍事行動使得整個中東地區的局勢愈發緊張，各方都在關注接下來的發展。真的希望這不是一場惡性循環的開始。",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260716-0801-2.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-07-16.html#story-2",
+      "source_url": "https://www.bbc.co.uk/news/articles/c9323zgq6wvo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "index": 3,
+      "title": "其三 · 俄烏邊境 · 俄羅斯攻擊造成14人死亡",
+      "tagline": "俄羅斯攻擊烏克蘭，造成多名平民遇難",
+      "body": "在俄烏邊境地區，俄羅斯的攻擊導致14名平民不幸遇難。烏克蘭則反擊，攻擊了20艘俄羅斯油輪，顯示出雙方的緊張局勢依然嚴峻。這場衝突不僅是軍事行動，還影響著普通人的生活，讓人感到無奈和悲傷。希望和平能早日降臨。",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260716-0801-3.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-07-16.html#story-3",
+      "source_url": "https://www.bbc.co.uk/news/articles/c8929jv8kdzo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "index": 4,
+      "title": "其四 · 加拿大安大略省 · 野火煙霧影響多地空氣品質",
+      "tagline": "安大略省野火煙霧飄散，影響多座城市空氣品質",
+      "body": "在加拿大安大略省，持續的野火導致煙霧飄散，甚至讓多倫多的空氣品質一度成為全球最差。煙霧不僅影響了當地居民的健康，也讓許多人感受到空氣清新的重要性。希望大家都能早日回到呼吸順暢的日子！",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260716-0801-4.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-07-16.html#story-4",
+      "source_url": "https://www.nytimes.com/2026/07/15/world/canada/wildfire-smoke-toronto-ontario-northeast.html"
+    },
+    {
+      "index": 5,
+      "title": "其五 · 澳洲坎培拉 · 政府針對數據中心施加新規",
+      "tagline": "澳洲將對數據中心施加能源和水資源的新規範",
+      "body": "澳洲政府計劃對數據中心施加新的能源和水資源規範，以應對人工智慧的快速發展。這不僅是對環境的保護，也顯示出政府對於新興科技的重視。希望這些新規能讓未來的科技發展更具可持續性，畢竟，環保可不是一個人的責任！",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260716-0801-5.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-07-16.html#story-5",
+      "source_url": "https://www.nytimes.com/2026/07/15/world/australia/albanese-artificial-intelligence-guardrails.html"
+    }
+  ]
+}
