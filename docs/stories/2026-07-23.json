@@ -1,0 +1,52 @@
+{
+  "date": "2026-07-23",
+  "generated_at": "2026-07-23T08:01:15+08:00",
+  "html_url": "https://jason852145.github.io/daily-news-comics/2026-07-23.html",
+  "stories": [
+    {
+      "index": 1,
+      "title": "其一 · 美國華府 · 美國與沙烏地阿拉伯簽署核協議",
+      "tagline": "美國與沙烏地阿拉伯達成和平核合作協議。",
+      "body": "在美國華府，能源部宣布與沙烏地阿拉伯簽署了一項和平核合作協議，這項協議不僅讓美國企業可以進入沙國的核能市場，還可能改變中東的能源格局。此舉或許會引發周邊國家的關注，大家都在想，難道中東要成為核能新秀了嗎？",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260723-0801-1.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-07-23.html#story-1",
+      "source_url": "https://www.bbc.co.uk/news/articles/cj03r59z73po?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "index": 2,
+      "title": "其二 · 以色列 · 以色列銀行威脅中止對巴勒斯坦經濟的支持",
+      "tagline": "以色列銀行可能停止與巴勒斯坦銀行的交易。",
+      "body": "在以色列，兩家主要銀行警告如果巴勒斯坦銀行不改變交易方式，它們將中止合作。這將對西岸的進出口造成重大影響，讓許多家庭的生活更加困難。看來，經濟戰爭比真正的戰爭來得更讓人頭痛。",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260723-0801-2.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-07-23.html#story-2",
+      "source_url": "https://www.nytimes.com/2026/07/22/world/middleeast/israeli-banks-palestinian-economy.html"
+    },
+    {
+      "index": 3,
+      "title": "其三 · 印度 · 年輕人抗議教育體系及失業問題",
+      "tagline": "印度年輕人對教育及就業抗議聲浪高漲。",
+      "body": "在印度，年輕人發起抗議運動，對教育體系的不滿及高失業率表示抗議，這對執政已久的政府構成挑戰。看來，年輕人對未來的焦慮已經不再是小道消息，而是成為了街頭的主題曲。",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260723-0801-3.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-07-23.html#story-3",
+      "source_url": "https://www.nytimes.com/2026/07/22/world/asia/india-youth-protest-modi-cockroach-janta-party.html"
+    },
+    {
+      "index": 4,
+      "title": "其四 · 伊朗 · 伊朗在特朗普威脅後進行報復性攻擊",
+      "tagline": "伊朗對特朗普的威脅做出強硬回應。",
+      "body": "在伊朗，面對特朗普的威脅，伊朗的中央指揮部展開了新一輪攻擊，這已經是連續第12天的軍事行動。這場衝突讓人不禁想問，這場衝突是否真的能夠平息，還是會升級成為更大的危機？",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260723-0801-4.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-07-23.html#story-4",
+      "source_url": "https://www.nytimes.com/live/2026/07/22/world/iran-war-strikes-trump-hormuz"
+    },
+    {
+      "index": 5,
+      "title": "其五 · 加拿大 · 加拿大北部居民對火災應對感到憤怒",
+      "tagline": "加拿大居民對火災應對措施表示不滿。",
+      "body": "在加拿大北部，居民們對當局在野火蔓延期間的信息傳遞和支持感到失望，很多人表示自己的警報被忽視。看來，這場火災不僅燒掉了樹木，還燒掉了居民的信心。",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260723-0801-5.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-07-23.html#story-5",
+      "source_url": "https://www.nytimes.com/2026/07/22/world/canada/ontario-wildfires-canada-smoke.html"
+    }
+  ]
+}
