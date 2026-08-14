@@ -1,0 +1,52 @@
+{
+  "date": "2026-08-14",
+  "generated_at": "2026-08-14T08:01:45+08:00",
+  "html_url": "https://jason852145.github.io/daily-news-comics/2026-08-14.html",
+  "stories": [
+    {
+      "index": 1,
+      "title": "其一 · 以色列西岸 · 以色列定居者重啟圍攻",
+      "tagline": "以色列定居者重啟圍攻，巴勒斯坦家庭生活困境加劇",
+      "body": "在以色列西岸，巴勒斯坦家庭面臨被以色列軍方驅逐的危機。家庭的生活被以色列定居者包圍，情勢緊張。這不僅是人道危機，還影響到地區的穩定，讓人不禁想：怎麼會有人把別人的家當作遊樂場？",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260814-0801-1.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-08-14.html#story-1",
+      "source_url": "https://www.nytimes.com/2026/08/13/world/middleeast/west-bank-siege-israeli-settlers.html"
+    },
+    {
+      "index": 2,
+      "title": "其二 · 美國華府 · 烏克蘭戰爭局勢升溫",
+      "tagline": "俄烏之戰進入第五年，普京無法宣稱勝利",
+      "body": "在華府，諾貝爾和平獎獲得者德米特里·穆拉特夫表示，普京已經無法再說他贏了烏克蘭，事實上，戰爭的持續只會讓烏克蘭更加堅韌。這場衝突不僅影響兩國，還對全球安全局勢造成影響，讓人不得不關注。",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260814-0801-2.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-08-14.html#story-2",
+      "source_url": "https://www.bbc.co.uk/news/articles/c74grmy2v7ko?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "index": 3,
+      "title": "其三 · 羅馬尼亞 · 核電廠因熱浪停擺",
+      "tagline": "羅馬尼亞唯一核電廠停工，電力供應堪憂",
+      "body": "在羅馬尼亞，因為熱浪導致多瑪河水位劇降，唯一的核電廠停工，這影響了20%的電力供應。當地居民開始擔心，這可不是個小問題，畢竟夏天沒有空調可不是好事！",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260814-0801-3.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-08-14.html#story-3",
+      "source_url": "https://www.bbc.co.uk/news/articles/cqlxpq5q799o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "index": 4,
+      "title": "其四 · 英國 · 高溫警報下的英國夏天",
+      "tagline": "英國今夏高溫警報，氣候變化成焦點",
+      "body": "英國氣象局發出高溫警報，這個夏天似乎要成為歷史上最熱的一個。高溫讓人想起了“英式夏天”這個名詞的過去：沒有陽光，只有雨水。看來今年的夏天不再是英國人茶話會的話題，而是氣候變化的大考驗。",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260814-0801-4.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-08-14.html#story-4",
+      "source_url": "https://www.nytimes.com/2026/08/13/world/europe/uk-heat-climate-change.html"
+    },
+    {
+      "index": 5,
+      "title": "其五 · 哥倫比亞 · 地震救援行動啟動",
+      "tagline": "墨西哥志願者協助哥倫比亞地震救援",
+      "body": "在哥倫比亞，墨西哥志願者救援隊Topos Azteca展開了援助行動，幫助搜尋地震災後的生還者。這支隊伍不僅在當地受到了熱烈歡迎，更是讓人們在困境中看到了希望，證明了人類的團結力量。",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20260814-0801-5.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-08-14.html#story-5",
+      "source_url": "https://www.nytimes.com/2026/08/13/world/americas/topos-azteca-rescue-efforts-colombia-earthquake.html"
+    }
+  ]
+}
