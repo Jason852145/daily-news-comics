@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-15",
+  "generated_at": "2026-10-15T08:02:44+08:00",
+  "html_url": "https://jason852145.github.io/daily-news-comics/2026-10-15.html",
+  "stories": [
+    {
+      "index": 1,
+      "title": "其一 · 烏克蘭基輔 · 明星網路遭限速影響戰局",
+      "tagline": "烏克蘭面對星鏈網路速度限制影響作戰",
+      "body": "在烏克蘭基輔，當地政府表示，雖然星鏈網路的接入有所改善，但速度依然受到限制，影響了戰場上的任務執行。這不只是科技問題，更是戰爭的生命線！如果網速再慢，可能連傳送求救信號都會卡住，真是讓人擔心。",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20261015-0802-1.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-10-15.html#story-1",
+      "source_url": "https://www.bbc.co.uk/news/articles/c8wy9veedgygo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "index": 2,
+      "title": "其二 · 愛爾蘭 · 大規模工人罷工爭取薪資",
+      "tagline": "愛爾蘭公共部門工人進行大規模罷工",
+      "body": "在愛爾蘭，數十萬名工人因薪資糾紛而發起罷工，這場運動顯示出公共部門對政府的不滿情緒。政府面臨的壓力越來越大，工人們希望能爭取到更好的待遇。看來，這個冬天不只是氣溫會下降，薪資的討論也會熱得不可開交！",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20261015-0802-2.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-10-15.html#story-2",
+      "source_url": "https://www.bbc.co.uk/news/articles/cjn5vxlrgqn4o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "index": 3,
+      "title": "其三 · 日本東京 · 日本抗議俄方拘留記者",
+      "tagline": "日本政府對俄方拘留記者表示抗議",
+      "body": "在東京，日本政府因俄羅斯拘留一名記者而召見俄方大使，該名記者被指控搜集軍事情報。這起事件不僅影響了兩國的外交關係，也引發了對言論自由的關注。希望這場外交風波不會成為火上加油的局面！",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20261015-0802-3.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-10-15.html#story-3",
+      "source_url": "https://www.nytimes.com/2026/10/14/world/asia/japan-protest-russia-detention-journalist.html"
+    },
+    {
+      "index": 4,
+      "title": "其四 · 肯尼亞 · 肺炎疫情再添新病例",
+      "tagline": "肯尼亞確認第二例埃博拉病例",
+      "body": "肯尼亞最近確認了第二例埃博拉病例，該病例是首例患者的親屬。這讓人不禁擔心疫情的擴散，尤其是在上週已有一名患者因病去世。希望政府能迅速採取措施，控制疫情，否則，這可不是我們期待的家庭聚會！",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20261015-0802-4.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-10-15.html#story-4",
+      "source_url": "https://www.bbc.co.uk/news/articles/cw5yn8rn04ljo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "index": 5,
+      "title": "其五 · 墨西哥 · 禁止兒童接觸暴力內容",
+      "tagline": "墨西哥對社交媒體加強兒童保護",
+      "body": "墨西哥政府最近簽署法令，禁止社交媒體上出現暴力內容，以保護未成年人。這一舉措是全球趨勢的一部分，旨在為孩子們創造一個更安全的網上環境。希望未來的網路世界能多一點陽光，少一點陰影！",
+      "image_url": "https://jason852145.github.io/daily-news-comics/img-20261015-0802-5.png",
+      "anchor_url": "https://jason852145.github.io/daily-news-comics/2026-10-15.html#story-5",
+      "source_url": "https://www.nytimes.com/2026/10/14/world/americas/mexico-media-bans-children.html"
+    }
+  ]
+}
